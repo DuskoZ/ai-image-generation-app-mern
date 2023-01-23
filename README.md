@@ -1,2 +1,1 @@
-# ai-image-generation-app-mern
- 
+# AI Image Generation App - Full stack MERN
