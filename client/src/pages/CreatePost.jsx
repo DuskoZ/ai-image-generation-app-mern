@@ -24,7 +24,40 @@ const CreatePost = () => {
         setForm({ ...form, prompt: randomPrompt });
     };
 
-    const generateImage = () => {};
+    const generateImage = async () => {
+        if (form.prompt) {
+            try {
+                setGeneratingImg(true);
+                // http for the localhost - important
+                // https for the web url
+                const response = await fetch(
+                    "http://localhost:8080/api/v1/dalle",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            prompt: form.prompt,
+                        }),
+                    }
+                );
+
+                const data = await response.json();
+                // spread parameters and set the image format
+                setForm({
+                    ...form,
+                    photo: `data:image/jpeg;base64,${data.photo}`,
+                });
+            } catch (error) {
+                alert(error);
+            } finally {
+                setGeneratingImg(false);
+            }
+        } else {
+            alert("Please enter a prompt");
+        }
+    };
 
     const handleSubmit = () => {};
 
@@ -68,13 +101,13 @@ const CreatePost = () => {
                             <img
                                 src={form.photo}
                                 alt={form.prompt}
-                                class="w-full h-full object-contain"
+                                className="w-full h-full object-contain"
                             />
                         ) : (
                             <img
                                 src={preview}
                                 alt="preview"
-                                class="w-9/12 h-9/12 object-contain opacity-40"
+                                className="w-9/12 h-9/12 object-contain opacity-40"
                             />
                         )}
 
