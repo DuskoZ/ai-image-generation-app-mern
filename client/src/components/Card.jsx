@@ -3,6 +3,7 @@ import React from "react";
 import { download } from "../assets";
 import { downloadImage } from "../utils";
 
+// Image cards
 const Card = ({ _id, name, prompt, photo }) => (
     <div className="rounded-xl group relative shadow-card hover:shadow-cardhover card">
         <img
