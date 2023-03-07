@@ -31,7 +31,8 @@ const CreatePost = () => {
                 // http for the localhost - important
                 // https for the web url
                 const response = await fetch(
-                    "http://localhost:8080/api/v1/dalle",
+                    // "http://localhost:8080/api/v1/dalle",
+                    "https://imagen-gutt.onrender.com/api/v1/dalle",
                     {
                         method: "POST",
                         headers: {
@@ -67,7 +68,8 @@ const CreatePost = () => {
 
             try {
                 const response = await fetch(
-                    "http://localhost:8080/api/v1/post",
+                    // "http://localhost:8080/api/v1/post",
+                    "https://imagen-gutt.onrender.com/api/v1/post",
                     {
                         method: "POST",
                         headers: {
